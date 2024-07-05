@@ -3,11 +3,9 @@ import { StyleSheet, View,Dimensions } from "react-native";
 const { width } = Dimensions.get('window');
 const Header = () => {
     return (
-        
         <View style={styles.header}>
                 
         </View>
-        
     );
 }
 const styles = StyleSheet.create({
