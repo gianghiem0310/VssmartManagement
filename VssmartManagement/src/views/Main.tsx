@@ -21,29 +21,33 @@ const Main = ()=>{
                 height: 94,
                 borderTopLeftRadius:24,
                 borderTopRightRadius:24,
-                paddingBottom:32
+                paddingBottom:32,
+                
             },
             tabBarLabelStyle:{
                 fontSize:14,
                 fontFamily:'Roboto',
-                opacity:0.85
-            }
+                opacity:0.85,
+                
+            },
+            tabBarInactiveTintColor:'rgba(0, 0, 0, 0.85)'
+            
 
         }}>
         <Tab.Screen name="Dashboard" component={Dashboard} options={{ title: 'Dashboard',headerTitleAlign: 'center' , tabBarIcon:({color,size})=>(
             <IconOutline name='dashboard' size={size} color={color} />
         )}} />
         <Tab.Screen name="Reports" component={Reports} options={{ title: 'Reports' ,headerTitleAlign: 'center', tabBarIcon:({color,size})=>(
-            <IconOutline name='user' size={size} color={color} />
+            <IconOutline name='ordered-list' size={size} color={color} />
         )}} />
         <Tab.Screen name="Users" component={Users} options={{ title: 'Users',headerTitleAlign: 'center' , tabBarIcon:({color,size})=>(
             <IconOutline name='user' size={size} color={color} />
         )}} />
         <Tab.Screen name="Notification" component={Notification} options={{ title: 'Notification' ,headerTitleAlign: 'center', tabBarIcon:({color,size})=>(
-            <IconOutline name='user' size={size} color={color} />
+            <IconOutline name='bell' size={size} color={color} />
         )}} />
         <Tab.Screen name="Settings" component={Settings} options={{ title: 'Settings',headerTitleAlign: 'center' , tabBarIcon:({color,size})=>(
-            <IconOutline name='user' size={size} color={color} />
+            <IconOutline name='setting' size={size} color={color} />
         )}} />
       </Tab.Navigator>
     </NavigationContainer>
