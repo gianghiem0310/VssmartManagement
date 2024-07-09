@@ -31,8 +31,7 @@ const Main = ()=>{
                 
             },
             tabBarInactiveTintColor:'rgba(0, 0, 0, 0.85)'
-            
-
+        
         }}>
         <Tab.Screen name="Dashboard" component={Dashboard} options={{ title: 'Dashboard',headerTitleAlign: 'center' , tabBarIcon:({color,size})=>(
             <IconOutline name='dashboard' size={size} color={color} />
