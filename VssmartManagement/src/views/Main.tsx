@@ -42,7 +42,7 @@ const Main = ()=>{
         <Tab.Screen name="Users" component={Users} options={{ title: 'Users',headerTitleAlign: 'center' , tabBarIcon:({color,size})=>(
             <IconOutline name='user' size={size} color={color} />
         )}} />
-        <Tab.Screen name="Notification" component={Notification} options={{ title: 'Notification' ,headerTitleAlign: 'center', tabBarIcon:({color,size})=>(
+        <Tab.Screen name="Notification" component={Notification} options={{ headerShadowVisible:false,title: 'Notification' ,headerTitleAlign: 'center', tabBarIcon:({color,size})=>(
             <IconOutline name='bell' size={size} color={color} />
         )}} />
         <Tab.Screen name="Settings" component={Settings} options={{ title: 'Settings',headerTitleAlign: 'center' , tabBarIcon:({color,size})=>(

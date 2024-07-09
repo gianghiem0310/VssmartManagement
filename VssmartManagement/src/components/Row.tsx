@@ -3,7 +3,6 @@ import { StyleSheet, View, Dimensions, Text } from "react-native";
 type InputProps = {
     data?: string[],
     background: string,
-
     height: number,
 }
 const Row = ({ data, background, height }: InputProps) => {
