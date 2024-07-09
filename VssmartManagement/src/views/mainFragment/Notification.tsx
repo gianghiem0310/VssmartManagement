@@ -1,39 +1,35 @@
-import React from "react";
-import { Dimensions, Text, View } from "react-native";
-import { BarChart } from "react-native-chart-kit";
-const Notification = () => {
+import React from 'react';
+import { View, useWindowDimensions } from 'react-native';
+import { TabView, SceneMap } from 'react-native-tab-view';
+import AllNotification from '../notificationLayouts/AllNotification';
+import EditNotification from '../notificationLayouts/EditNotification';
+import OrderNotification from '../notificationLayouts/OrderNotification';
+import PayNotification from '../notificationLayouts/PayNotification';
+const renderScene = SceneMap({
+    all: AllNotification,
+    edit: EditNotification,
+    order: OrderNotification,
+    pay: PayNotification,
+});
 
-    const data = {
-        labels: ['Nam', 'Hoa', 'Nhi'],
-        datasets: [
-            {
-                data: [15, 20, 25],
-            },
-        ],
-    };
+const Notification = ()=> {
+    const layout = useWindowDimensions();
 
-
+    const [index, setIndex] = React.useState(0);
+    const [routes] = React.useState([
+        { key: 'all', title: 'Tất cả' },
+        { key: 'edit', title: 'Chỉnh sửa' },
+        { key: 'order', title: 'Đơn hàng' },
+        { key: 'pay', title: 'Thanh toán' },
+    ]);
 
     return (
-        <>
-            <View>
-                <BarChart data={data} width={Dimensions.get('window').width} height={200} chartConfig={{
-                    backgroundGradientFrom: "#1E2923",
-                    backgroundGradientFromOpacity: 0,
-                    backgroundGradientTo: "#08130D",
-                    backgroundGradientToOpacity: 0.5,
-                    color: (opacity = 1) => `#1e81b0`,
-                    strokeWidth: 2, // optional, default 3
-                    barPercentage: 1,
-                    useShadowColorFromDataset: false // optional
-                }}
-                verticalLabelRotation={30}
-                yAxisLabel="$"
-                yAxisSuffix="$"
-                />
-            </View>
-        </>
+        <TabView
+            navigationState={{ index, routes }}
+            renderScene={renderScene}
+            onIndexChange={setIndex}
+            initialLayout={{ width: layout.width }}
+        />
     );
 }
-
 export default Notification;
