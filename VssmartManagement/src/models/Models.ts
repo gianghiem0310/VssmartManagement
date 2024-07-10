@@ -5,6 +5,15 @@ export type Notification = {
 }
 export type Report = {
     id: number,
-    title: string,
-    type: number
+    dayTrading:string,
+    totalSale: string,
+    vat:string,
+    totalDecrease: string,
+    discount: string,
+    totalReturn: string,
+    salesRevenue: string,
+    debtCollection: string,
+    payingGuests: string,
+    debtDuringDay: string,
+    order: number,
 }

@@ -1,77 +1,59 @@
 import React from "react";
-import { Text } from "react-native";
-import {
-    LineChart,
-    BarChart,
-    PieChart,
-    ProgressChart,
-    ContributionGraph,
-    StackedBarChart
-} from "react-native-chart-kit";
-import { Dimensions } from "react-native";
-const screenWidth = Dimensions.get("window").width;
+import { StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
+import SalesReport from "../reportLayouts/SalesReport";
+import IncomeReport from "../reportLayouts/IncomeReport";
+
+const renderScene = SceneMap({
+    sales: SalesReport,
+    income: IncomeReport,
+});
 const Reports = () => {
+    const layout = useWindowDimensions();
 
-    const data = {
-        labels: [],
-        datasets: [
-            {
-                data: [20, 45, 28, 80, 99, 43],
-                colors: [(opacity = 1) => `blue`, (opacity = 1) => `blue`, (opacity = 1) => `blue`, (opacity = 1) => `blue`, (opacity = 1) => `blue`, (opacity = 1) => `blue`, (opacity = 1) => `blue`]
-            }
-        ]
-    };
-    const barChartProps = {
-        style: { marginVertical: 8, borderRadius: 16 },
-        contentInset: { top: 30, bottom: 30 },
-      };
-    const chartConfig = {
-        backgroundGradientFromOpacity: 0, // Đặt opacity của màu gradient từ
-        backgroundGradientToOpacity: 0, // Đặt opacity của màu gradient đến
-        fillShadowGradient: 'transparent',
-        color: (opacity = 1) => `rgba(255, 0, 0, ${opacity})`,
-        strokeWidth: 3, // optional, default 3
-        barPercentage: 0.5,
-        useShadowColorFromDataset: false, // optional
-        propsForLabels: { fontSize: 0 },
-
-    };
+    const [index, setIndex] = React.useState(0);
+    const [routes] = React.useState([
+        { key: 'sales', title: 'Doanh số' },
+        { key: 'income', title: 'Thu chi' },
+    ]);
     return (
-        <>
-            <BarChart
-                data={{
-                    labels: [],
-                    datasets: [
-                        {
-                            data: [20, 45, 28, 80, 99, 43,20, 45, 28, 80, 99, 43],
-                            colors: [(opacity = 1) => `blue`, (opacity = 1) => `blue`, (opacity = 1) => `blue`, (opacity = 1) => `blue`, (opacity = 1) => `blue`, (opacity = 1) => `blue`, (opacity = 1) => `blue`,(opacity = 1) => `blue`, (opacity = 1) => `blue`, (opacity = 1) => `blue`, (opacity = 1) => `blue`, (opacity = 1) => `blue`, (opacity = 1) => `blue`, (opacity = 1) => `blue`]
-                        },
-                    ],
-                }}
-                width={Dimensions.get('window').width - 16}
-                height={200}
-                yAxisLabel=''
-                yAxisSuffix="Số tiền"
-                chartConfig={{
-                    backgroundGradientFromOpacity: 0, // Đặt opacity của màu gradient từ
-                    backgroundGradientToOpacity: 0, // Đặt opacity của màu gradient đến
-                    fillShadowGradient: 'transparent', // Không có bóng đổ (màu trong suốt)
-                    color: () => `blue`, // Màu của các cột (màu đỏ)
-                    strokeWidth: 3, // Độ dày của các đường viền
-                    barPercentage: 0.5, // Phần trăm chiều rộng của mỗi cột
-                    useShadowColorFromDataset: false, // Không sử dụng màu bóng đổ từ dữ liệu
-                    propsForLabels: { fontSize: 0 }, // Ẩn nhãn
-                   
-                }}style={{alignContent:'center'}}
-                withInnerLines={false}
-                withCustomBarColorFromData
-                flatColor
-                
-                
-                
-            />
-        </>
+        <TabView
+            navigationState={{ index, routes }}
+            renderScene={renderScene}
+            onIndexChange={setIndex}
+            initialLayout={{ width: layout.width }}
+            renderTabBar={props => <TabBar indicatorStyle={[styles.styleIndicator,{  marginLeft: (layout.width / routes.length - 44) / 2, marginRight: (layout.width / routes.length - 4) / 2 }]} tabStyle={{ height: 56 }} {...props} style={styles.tabBar} labelStyle={styles.label}
+                renderLabel={({ route, focused }) => (
+                    <Text style={[styles.label, { color: focused ? '#1890FF' : '#000000D9' }]}>
+                        {route.title}
+                    </Text>
+                )}
+            />}
+        />
     );
 }
+const styles = StyleSheet.create({
+    scene: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
 
+    },
+    tabBar: {
+        backgroundColor: '#FFFFFF',
+        elevation: 0, // tắt shadow trên Android
+        shadowOpacity: 0, // tắt shadow trên iOS,
+    },
+    label: {
+        color: '#000000D9',
+        fontWeight: '400',
+        fontFamily: 'Roboto',
+        fontSize: 16,
+        lineHeight: 24,
+        textTransform: 'none'
+    },
+    styleIndicator: {
+        alignSelf: 'center', height: 2, width: 44, backgroundColor: '#1890FF'
+    }
+});
 export default Reports;

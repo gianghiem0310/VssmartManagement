@@ -14,7 +14,6 @@ const renderScene = SceneMap({
 
 const Notification = () => {
     const layout = useWindowDimensions();
-
     const [index, setIndex] = React.useState(0);
     const [routes] = React.useState([
         { key: 'all', title: 'Tất cả' },
