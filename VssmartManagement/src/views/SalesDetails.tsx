@@ -83,7 +83,7 @@ const SalesDetails = () => {
         <>
             <View style={styles.main} >
                 
-                <FlatList data={dataReport} contentContainerStyle={styles.listContainer} ItemSeparatorComponent={() => <View style={styles.separator}  />} renderItem={({ item, index }) => {
+                <FlatList data={dataReport} showsVerticalScrollIndicator={false} contentContainerStyle={styles.listContainer} ItemSeparatorComponent={() => <View style={styles.separator}  />} renderItem={({ item, index }) => {
                     return (
                         index === 0 ?
                         <>

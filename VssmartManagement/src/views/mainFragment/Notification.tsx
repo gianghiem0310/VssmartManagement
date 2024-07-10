@@ -5,6 +5,7 @@ import AllNotification from '../notificationLayouts/AllNotification';
 import EditNotification from '../notificationLayouts/EditNotification';
 import OrderNotification from '../notificationLayouts/OrderNotification';
 import PayNotification from '../notificationLayouts/PayNotification';
+import { scale } from 'react-native-size-matters'; 
 const renderScene = SceneMap({
     all: AllNotification,
     edit: EditNotification,
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
         color: '#000000D9',
         fontWeight: '400',
         fontFamily: 'Roboto',
-        fontSize: 16,
+        fontSize: 14,//16
         lineHeight: 24,
         textTransform: 'none'
     },

@@ -82,8 +82,7 @@ const styles = StyleSheet.create({
     cardView: {
         width: '100%',
         borderRadius: 2,
-        borderTopWidth: 1,
-        borderBottomWidth: 1,
+        borderWidth: 1,
         borderColor: '#0000000F',
         gap: 16,
         backgroundColor: '#FFFFFF',

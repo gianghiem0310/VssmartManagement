@@ -15,7 +15,7 @@ const AllNotification = () => {
     ])
     return (
         <View style={styles.main}>
-            <FlatList data={dataNoti} renderItem={({item,index})=>{
+            <FlatList data={dataNoti} showsVerticalScrollIndicator={false} renderItem={({item,index})=>{
                 return(
                    <CardViewAllNotification data={item}>
 

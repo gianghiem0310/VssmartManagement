@@ -50,7 +50,7 @@ const CardViewAllNotification: React.FC<{ data: Notification }> = ({ data }) => 
                             <TitleDescription title="Mã ĐH: " data="TT2392903 " date="(12/06/2024)"></TitleDescription>
                             <TitleDescription title="K/H: " data="Đại lý Nhật Nguyệt" date=""></TitleDescription>
                             <TitleDescription title="Tổng tiền: " data="90,000,000đ" date=""></TitleDescription>
-                            <TitleDescription title="Nợ trước: " data="12,280,000đ" date=""></TitleDescription>
+                            <TitleDescription title="Nợ trước: " data="12,280,00012,280,00012,280,00012,280,000đ" date=""></TitleDescription>
                             <TitleDescription title="Chi tiết đơn hàng: " data="" date=""></TitleDescription>
                             <StyleBold data=" 1. KH - 3S*237ML (30 chai) (Sumitôm): 1,500 x 5,000 = 90,000,000đ "></StyleBold>
                             <StyleBold data=" 1. KH - 3S*237ML (30 chai) (Sumitôm): 1,500 x 5,000 = 90,000,000đ "></StyleBold>

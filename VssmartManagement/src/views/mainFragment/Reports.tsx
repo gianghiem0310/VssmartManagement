@@ -22,11 +22,13 @@ const Reports = () => {
             renderScene={renderScene}
             onIndexChange={setIndex}
             initialLayout={{ width: layout.width }}
-            renderTabBar={props => <TabBar indicatorStyle={[styles.styleIndicator,{  marginLeft: (layout.width / routes.length - 44) / 2, marginRight: (layout.width / routes.length - 4) / 2 }]} tabStyle={{ height: 56 }} {...props} style={styles.tabBar} labelStyle={styles.label}
+            renderTabBar={props => <TabBar indicatorStyle={[styles.styleIndicator, { marginLeft: (layout.width / routes.length - 44) / 2, marginRight: (layout.width / routes.length - 4) / 2 }]} tabStyle={{ height: 56 }} {...props} style={styles.tabBar} labelStyle={styles.label}
                 renderLabel={({ route, focused }) => (
-                    <Text style={[styles.label, { color: focused ? '#1890FF' : '#000000D9' }]}>
-                        {route.title}
-                    </Text>
+                    
+                        <Text style={[styles.label, { color: focused ? '#1890FF' : '#000000D9' }]}>
+                            {route.title}
+                        </Text>
+
                 )}
             />}
         />

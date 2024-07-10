@@ -1,39 +1,39 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import MiniContent from "./MiniContent";
-import { Button } from "@ant-design/react-native";
-import { IconOutline } from "@ant-design/icons-react-native";
 import { Report } from "../../models/Models";
+import { Button } from "@ant-design/react-native";
+import MiniContent from "./MiniContent";
 import MiniContentOrder from "./MiniContentOrder";
-import TotalOrder from "./TotalOrder";
-import TotalOrderDetail from "./TotalOrderDetail";
-const CardViewDetailReport: React.FC<{ data: Report }> = ({ data }) => {
+import MiniContentMoney from "./MiniContentMoney";
+const CardViewIncome: React.FC<{ data: Report }> = ({ data }) => {
+    const [isIncrease, setIncrease] = useState(false)
     return (
         <>
             <View style={styles.cardView}>
                 <View style={styles.boxTopCardView}>
                     <View style={styles.contentBoxTop}>
-                        <View style={styles.viewData}>
-                            <TotalOrderDetail order={data.order} />
+                        <View style={styles.lineContentBoxTop}>
+                            <MiniContent title="Ngày lập" data={data.dayTrading} />
+                            <MiniContentMoney title="Tiền thu" data={data.totalSale} type={2} />
                         </View>
                         <View style={styles.lineContentBoxTop}>
-                            <MiniContent title="Mã đơn hàng" data={data.dayTrading} />
-                            <MiniContent title="Tên khách hàng" data={data.dayTrading} />
+                            <MiniContent title="Người thu" data={data.vat} />
+                            <MiniContent title="Người chi" data={data.totalDecrease} />
                         </View>
+
+
+
                         <View style={styles.lineContentBoxTop}>
-                            <MiniContent title="VAT" data={data.vat} />
-                            <MiniContent title="Tiền bán" data={data.totalDecrease} />
+                            <MiniContent title="Nội dung" data={data.discount} />
+                            <MiniContent title="Ghi chú" data={data.totalReturn} />
                         </View>
-                        <View style={styles.lineContentBoxTop}>
-                            <MiniContent title="Giảm" data={data.discount} />
-                            <MiniContent title="Chiết khấu" data={data.totalReturn} />
-                        </View>
-                        <View style={styles.lineContentBoxTop}>
-                            <MiniContent title="Trả hàng" data={data.salesRevenue} />
-                            <MiniContent title="Thanh toán" data={data.debtCollection} />
-                        </View>
+
+
                     </View>
                 </View>
+
+
+
             </View>
         </>
     );
@@ -64,13 +64,13 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         flexDirection: 'row',
     },
-    viewData:{
+    viewData: {
         minHeight: 22,
-        flexDirection:'row',
+        flexDirection: 'row',
         gap: 4,
         flexWrap: 'wrap',
     },
-    data:{
+    data: {
         minHeight: 22,
         fontFamily: 'Roboto',
         fontWeight: '500',
@@ -80,4 +80,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default CardViewDetailReport;
+export default CardViewIncome;

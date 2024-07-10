@@ -7,7 +7,8 @@ const TitleDescription:React.FC<{title:string,data:string,date:string}> = ({titl
 }
 const styles = StyleSheet.create({
     main:{
-        flexDirection:'row'
+        flexDirection:'row',
+        flexWrap: 'wrap'
     },
     text:{
         fontFamily: 'Roboto',
