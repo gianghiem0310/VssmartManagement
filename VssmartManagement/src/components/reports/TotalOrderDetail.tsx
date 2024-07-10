@@ -1,10 +1,10 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-const TotalOrder:React.FC<{order:number}> = ({order}) => {
+const TotalOrderDetail:React.FC<{order:number}> = ({order}) => {
     return (
         <View style={styles.main}>
             <View style={styles.viewText}>
-            <Text style={styles.text}>{order+" "}Đơn</Text>
+            <Text style={styles.text}>Đơn{" "+order}</Text>
             </View>
         </View>
     );
@@ -40,4 +40,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default TotalOrder;
+export default TotalOrderDetail;

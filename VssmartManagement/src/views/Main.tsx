@@ -1,16 +1,18 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Dashboard from './mainFragment/Dashboard';
 import Reports from './mainFragment/Reports';
 import Notification from './mainFragment/Notification';
 import Users from './mainFragment/Users';
 import Settings from './mainFragment/Settings';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { IconOutline } from '@ant-design/icons-react-native';
 import SalesDetails from './SalesDetails';
+import { inlineStyles } from 'react-native-svg';
+import { RootStackParamList } from '../resource/types';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -71,21 +73,44 @@ const MainStack = () => {
         </Tab.Navigator>
     )
 }
+
+const CustomTitle = () => (
+    <Text style={styles.title}>Chi tiết doanh số bán hàng</Text>
+);
+
+const CustomBackButton = () => {
+    const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+    return (
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+            <IconOutline name="left" size={12} color="#000000D9" />
+        </TouchableOpacity>
+    )
+
+
+};
 const Main = () => {
     return (
         <>
             <NavigationContainer>
-            <Stack.Navigator>
-            <Stack.Screen name="Main" component={MainStack}  options={{headerShown: false}}/>
-            <Stack.Screen name="SalesDetails" component={SalesDetails} options={{ headerTitleAlign: 'center' }} />
-        </Stack.Navigator>
+                <Stack.Navigator>
+                    <Stack.Screen name="Main" component={MainStack} options={{ headerShown: false }} />
+                    <Stack.Screen name="SalesDetails" component={SalesDetails} options={{ headerTitle: () => <CustomTitle />, headerBackVisible: false, headerTitleAlign: 'center', headerShadowVisible: false, headerLeft: () => <CustomBackButton /> }} />
+                </Stack.Navigator>
             </NavigationContainer>
         </>
     )
 }
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
     bottomTabNavigator: {
 
+    },
+    title: {
+        fontFamily: 'Roboto',
+        fontWeight: '400',
+        fontSize: 16,
+        lineHeight: 24,
+        textAlign: 'center',
+        color: '#000000D9'
     }
 })
 export default Main;
